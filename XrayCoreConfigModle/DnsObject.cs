@@ -13,7 +13,7 @@ namespace XrayCoreConfigModle
     /// </summary>
     public class DnsObject
     {
-        [JsonConverter(typeof(JsonConverters.DnsHostConverter))]
+        [JsonConverter(typeof(JsonConverters.DnsHostsConverter))]
         /// <summary>
         /// 静态 IP 列表，其值为一系列"域名": ["地址 1","地址 2"]。其中地址可以是 IP 或者域名。
         /// 在解析域名时，如果域名匹配这个列表中的某一项:
@@ -21,7 +21,7 @@ namespace XrayCoreConfigModle
         /// 当该项的地址为域名时，会使用此域名进行 IP 解析，而不使用原始域名。
         /// 当地址中同时设置了多个 IP 和域名，则只会返回第一个域名，其余 IP 和域名均被忽略。
         /// </summary>
-        public Dictionary<string, List<string>>? host { get; set; }
+        public Dictionary<string, List<string>>? hosts { get; set; }
 
         [JsonConverter(typeof(JsonConverters.DnsServersConverter))]
         /// <summary>

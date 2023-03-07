@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.JsonConverters
 {
-    public class DnsHostConverter : JsonConverter<Dictionary<string, List<string>>?>
+    public class DnsHostsConverter : JsonConverter<Dictionary<string, List<string>>?>
     {
         public override Dictionary<string, List<string>>? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

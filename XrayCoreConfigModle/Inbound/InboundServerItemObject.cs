@@ -25,7 +25,7 @@ namespace XrayCoreConfigModle.Inbound
         /// <summary>
         /// 具体的配置内容，protocol的值不同而不同
         /// </summary>
-        public HttpConfigurationObject? settings { get; set; }
+        public InboundConfigurationObject? settings { get; set; }
         /// <summary>
         /// 底层传输方式（transport）是当前 Xray 节点和其它节点对接的方式
         /// </summary>

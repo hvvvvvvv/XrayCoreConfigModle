@@ -17,10 +17,10 @@ namespace XrayCoreConfigModle.ProtocolSetting
         /// 是否为 abstract domain socket，默认值 false。
         /// </summary>
         [JsonPropertyName("abstract")]
-        public bool abstract_ { get; set; }
+        public bool? abstract_ { get; set; }
         /// <summary>
         /// abstract domain socket 是否带 padding，默认值 false。
         /// </summary>
-        public bool padding { get; set; }
+        public bool? padding { get; set; }
     }
 }

@@ -25,10 +25,10 @@ namespace XrayCoreConfigModle.Inbound
         /// 1、格式为 "addr:port"，其中 addr 支持 IPv4、域名、IPv6，若填写域名，也将直接发起 TCP 连接（而不走内置的 DNS）。
         /// 2、Unix domain socket，格式为绝对路径，形如 "/dev/shm/domain.socket"，可在开头加 @ 代表 abstract，@@ 则代表带 padding 的 abstract。
         /// </summary>
-        public int dest { get; set; }
+        public int? dest { get; set; }
         /// <summary>
         /// 发送 PROXY protocol，专用于传递请求的真实来源 IP 和端口，填版本 1 或 2，默认为 0，即不发送。若有需要建议填 1。
         /// </summary>
-        public int xver { get; set; }
+        public int? xver { get; set; }
     }
 }

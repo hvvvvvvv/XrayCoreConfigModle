@@ -20,7 +20,7 @@ namespace XrayCoreConfigModle.Inbound
         /// <summary>
         /// 将流量转发到目标地址的指定端口，范围 [1, 65535]，数值类型。必填参数。
         /// </summary>
-        public int port { get; set; }
+        public int? port { get; set; }
         /// <summary>
         /// 可接收的网络协议类型。比如当指定为 "tcp" 时，仅会接收 TCP 流量。默认值为 "tcp"。
         /// 可选值："tcp" | "udp" | "tcp,udp"
@@ -29,14 +29,14 @@ namespace XrayCoreConfigModle.Inbound
         /// <summary>
         /// 连接空闲的时间限制。单位为秒。默认值为 300。处理一个连接时，如果在 timeout 时间内，没有任何数据被传输，则中断该连接。
         /// </summary>
-        public int timeout { get; set; }
+        public int? timeout { get; set; }
         /// <summary>
         /// 当值为 true 时，dokodemo-door 会识别出由 iptables 转发而来的数据，并转发到相应的目标地址。
         /// </summary>
-        public bool followRedirect { get; set; }
+        public bool? followRedirect { get; set; }
         /// <summary>
         /// userLevel 的值, 对应 policy 中 level 的值. 如不指定, 默认为 0。
         /// </summary>
-        public int userLevel { get; set; }
+        public int? userLevel { get; set; }
     }
 }

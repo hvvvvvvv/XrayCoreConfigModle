@@ -14,13 +14,13 @@ namespace XrayCoreConfigModle.ProtocolSetting
         ///     仅适用于 Linux 系统。
         ///     需要 CAP_NET_ADMIN 权限。
         /// </summary>
-        public int mark { get; set; }
+        public int? mark { get; set; }
         /// <summary>
         /// 是否启用 TCP Fast Open(详情参阅：https://zh.wikipedia.org/wiki/TCP%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80)
         /// 当其值为 true 或正整数时，启用 TFO；当其值为 false 或负数时，强制关闭 TFO；
         /// 当此项不存在或为 0 时，使用系统默认设置。 可用于 inbound/outbound。
         /// </summary>
-        public bool tcpFastOpen { get; set; }
+        public bool? tcpFastOpen { get; set; }
         /// <summary>
         /// "redirect" | "tproxy" | "off"
         /// 是否开启透明代理（仅适用于 Linux）
@@ -47,12 +47,12 @@ namespace XrayCoreConfigModle.ProtocolSetting
         /// 仅用于 inbound，指示是否接收 PROXY protocol。
         /// PROXY protocol 专用于传递请求的真实来源 IP 和端口，若你不了解它，请先忽略该项。
         /// </summary>
-        public bool acceptProxyProtocol { get; set; }
+        public bool? acceptProxyProtocol { get; set; }
         /// <summary>
         /// TCP 保持活跃的数据包发送间隔，单位为秒。该设置仅适用于 Linux 下(存疑)。
         /// 不配置此项或配置为 0 表示使用 Go 默认值。
         /// </summary>
-        public int tcpKeepAliveInterval { get; set; }
+        public int? tcpKeepAliveInterval { get; set; }
         /// <summary>
         /// TCP 拥塞控制算法。仅支持 Linux。 不配置此项表示使用系统默认值。
         /// </summary>

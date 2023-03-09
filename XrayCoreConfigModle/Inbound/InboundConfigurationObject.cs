@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.Inbound
 {
-    public class InboundConfigurationObject
+    public abstract class InboundConfigurationObject
     {
     }
 }

@@ -13,7 +13,6 @@ namespace XrayCoreConfigModle
     /// </summary>
     public class DnsObject
     {
-        [JsonConverter(typeof(JsonConverters.DnsHostsConverter))]
         /// <summary>
         /// 静态 IP 列表，其值为一系列"域名": ["地址 1","地址 2"]。其中地址可以是 IP 或者域名。
         /// 在解析域名时，如果域名匹配这个列表中的某一项:
@@ -43,15 +42,15 @@ namespace XrayCoreConfigModle
         /// <summary>
         /// true 禁用 DNS 缓存，默认为 false，即不禁用
         /// </summary>
-        public bool disableCache { get; set; }
+        public bool? disableCache { get; set; }
         /// <summary>
         /// true 禁用 DNS 的 fallback 查询，默认为 false，即不禁用。
         /// </summary>
-        public bool disableFallback { get; set; }
+        public bool? disableFallback { get; set; }
         /// <summary>
         /// true 当 DNS 服务器的优先匹配域名列表命中时，禁用 fallback 查询，默认为 false，即不禁用。
         /// </summary>
-        public bool disableFallbackIfMatch { get; set; }
+        public bool? disableFallbackIfMatch { get; set; }
         /// <summary>
         /// 由内置 DNS 发出的查询流量，除 localhost、fakedns、TCPL、DOHL 和 DOQL 模式外，都可以用此标识在路由使用 inboundTag 进行匹配。
         /// </summary>

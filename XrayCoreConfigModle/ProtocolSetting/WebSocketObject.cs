@@ -16,7 +16,7 @@ namespace XrayCoreConfigModle.ProtocolSetting
         /// 填写 true 时，最底层 TCP 连接建立后，请求方必须先发送 PROXY protocol v1 或 v2，否则连接会被关闭。
         /// 默认值为 false。
         /// </summary>
-        public bool acceptProxyProtocol { get; set; }
+        public bool? acceptProxyProtocol { get; set; }
         /// <summary>
         /// WebSocket 所使用的 HTTP 协议路径，默认值为 "/"。
         /// </summary>

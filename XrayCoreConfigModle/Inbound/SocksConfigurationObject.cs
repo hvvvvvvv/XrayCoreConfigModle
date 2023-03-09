@@ -19,7 +19,7 @@ namespace XrayCoreConfigModle.Inbound
         /// <summary>
         /// 是否开启 UDP 协议的支持,默认值为 false。
         /// </summary>
-        public bool udp { get; set; }
+        public bool? udp { get; set; }
         /// <summary>
         /// 当开启 UDP 时，Xray 需要知道本机的 IP 地址,默认值为 "127.0.0.1"
         /// </summary>
@@ -27,7 +27,7 @@ namespace XrayCoreConfigModle.Inbound
         /// <summary>
         /// 对应 policy 中 level 的值。 如不指定, 默认为 0。
         /// </summary>
-        public int userLevel { get; set; }
+        public int? userLevel { get; set; }
     }
     public class SocksAccounts
     {

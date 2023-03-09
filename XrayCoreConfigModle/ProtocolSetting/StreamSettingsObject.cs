@@ -25,43 +25,43 @@ namespace XrayCoreConfigModle.ProtocolSetting
         /// </summary>
         public TLSObject? tlsSettings { get; set; }
         /// <summary>
-        /// XTLS 配置。security 为"XTLS"时生效
+        /// XTLS 配置。security 为"xtls"时生效
         /// </summary>
         public TLSObject? xtlsSettings { get; set; }
         /// <summary>
-        /// 
+        /// reality 配置。security 为"reality"时生效
         /// </summary>
         public RealityObject? realitySettings { get; set; }
         /// <summary>
-        /// 
+        /// tcp 配置。network 为"tcp"时生效
         /// </summary>
         public TcpObject? tcpSettings { get; set; }
         /// <summary>
-        /// 
+        /// kcp 配置。network 为"kcp"时生效
         /// </summary>
         public KcpObject? kcpSettings { get; set; }
         /// <summary>
-        /// 
+        /// WebSocket 配置。network 为"ws"时生效
         /// </summary>
         public WebSocketObject? wsSettings { get; set; }
         /// <summary>
-        /// 
+        /// http 配置。network 为"http"时生效
         /// </summary>
         public HttpObject? httpSettings { get; set; }
         /// <summary>
-        /// 
+        /// QUIC 配置。network 为"quic"时生效
         /// </summary>
         public QuicObject? quicSettings { get; set; }
         /// <summary>
-        /// 
+        /// Domain socket配置，network 为"domainsocket"时生效
         /// </summary>
         public DomainSocketObject? dsSettings { get; set; }
         /// <summary>
-        /// 
+        /// gRPC 配置，network 为"grpc"时生效
         /// </summary>
         public GRPCObject? grpcSettings { get; set; }
         /// <summary>
-        /// 
+        /// 透明代理相关的具体配置
         /// </summary>
         public SockoptObject? sockopt { get; set; }
     }

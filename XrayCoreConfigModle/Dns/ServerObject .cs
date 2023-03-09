@@ -19,7 +19,7 @@ namespace XrayCoreConfigModle.Dns
         /// <summary>
         /// 
         /// </summary>
-        public int port { get; set; }
+        public int? port { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -31,7 +31,7 @@ namespace XrayCoreConfigModle.Dns
         /// <summary>
         /// 
         /// </summary>
-        public bool skipFallback { get; set; }
+        public bool? skipFallback { get; set; }
         /// <summary>
         /// 
         /// </summary>

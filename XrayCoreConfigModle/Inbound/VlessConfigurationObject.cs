@@ -30,7 +30,7 @@ namespace XrayCoreConfigModle.Inbound
         /// <summary>
         /// VLESS 的用户 ID，可以是任意小于 30 字节的字符串, 也可以是一个合法的 UUID.
         /// </summary>
-        public int level { get; set; }
+        public int? level { get; set; }
         /// <summary>
         /// 用户邮箱，用于区分不同用户的流量（会体现在日志、统计中）。
         /// </summary>

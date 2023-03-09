@@ -23,11 +23,11 @@ namespace XrayCoreConfigModle.ProtocolSetting
         /// 单位秒，当这段时间内没有接收到数据时，将会进行健康检查。
         /// 健康检查默认不启用。
         /// </summary>
-        public int read_idle_timeout { get; set; }
+        public int? read_idle_timeout { get; set; }
         /// <summary>
         /// 单位秒，健康检查的超时时间。如果在这段时间内没有完成健康检查，即认为健康检查失败。默认值为 15。
         /// </summary>
-        public int health_check_timeout { get; set; }
+        public int? health_check_timeout { get; set; }
         /// <summary>
         /// HTTP 方法。默认值为 "PUT"。
         /// </summary>

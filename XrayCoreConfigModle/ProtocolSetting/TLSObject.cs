@@ -17,12 +17,12 @@ namespace XrayCoreConfigModle.ProtocolSetting
         /// <summary>
         /// 当值为 true 时，服务端接收到的 SNI 与证书域名不匹配即拒绝 TLS 握手，默认为 false。
         /// </summary>
-        public bool rejectUnknownSni { get; set; }
+        public bool? rejectUnknownSni { get; set; }
         /// <summary>
         /// 是否允许不安全连接（仅用于客户端）。默认值为 false。
         /// 当值为 true 时，Xray 不会检查远端主机所提供的 TLS 证书的有效性。
         /// </summary>
-        public bool allowInsecure { get; set; }
+        public bool? allowInsecure { get; set; }
         /// <summary>
         /// 指定了 TLS 握手时指定的 ALPN 数值。默认值为 ["h2", "http/1.1"]。
         /// </summary>
@@ -48,13 +48,13 @@ namespace XrayCoreConfigModle.ProtocolSetting
         /// 当值为 true 时，Xray 只会使用 certificates 中指定的证书进行 TLS 握手。
         /// 当值为 false 时，Xray 只会使用操作系统自带的 CA 证书进行 TLS 握手。
         /// </summary>
-        public bool disableSystemRoot { get; set; }
+        public bool? disableSystemRoot { get; set; }
         /// <summary>
         /// 此参数的设置为 false 时, ClientHello 里没有 session_ticket 这个扩展。 
         /// 通常来讲 go 语言程序的 ClientHello 里并没有用到这个扩展, 
         /// 因此建议保持默认值。 默认值为 false。
         /// </summary>
-        public bool enableSessionResumption { get; set; }
+        public bool? enableSessionResumption { get; set; }
         /// <summary>
         /// 此参数用于配置指定 TLS Client Hello 的指纹。当其值为空时，表示不启用此功能。
         /// 启用后，Xray 将通过 uTLS 库 模拟 TLS 指纹，或随机生成。支持三种配置方式：
@@ -79,11 +79,11 @@ namespace XrayCoreConfigModle.ProtocolSetting
         /// <summary>
         /// OCSP 装订更新，与证书热重载的时间间隔。 单位：秒。默认值为 3600，即一小时。
         /// </summary>
-        public int ocspStapling { get; set; }
+        public int? ocspStapling { get; set; }
         /// <summary>
         /// 仅加载一次。值为 true 时将关闭证书热重载功能与 ocspStapling 功能。当值为 true 时，将会关闭 OCSP 装订
         /// </summary>
-        public bool oneTimeLoading { get; set; }
+        public bool? oneTimeLoading { get; set; }
         /// <summary>
         /// "encipherment" | "verify" | "issue"
         /// 证书用途，默认值为 "encipherment"

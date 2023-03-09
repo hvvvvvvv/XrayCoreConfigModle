@@ -28,7 +28,7 @@ namespace XrayCoreConfigModle.Inbound
         /// "none"
         /// "aes-128-cfb"
         /// </summary>
-        public bool disableInsecureEncryption { get; set; }
+        public bool? disableInsecureEncryption { get; set; }
     }
     public class DetourObject
     {
@@ -42,11 +42,11 @@ namespace XrayCoreConfigModle.Inbound
         /// <summary>
         ///  对应 policy 中 level 的值。 如不指定, 默认为 0。
         /// </summary>
-        public int level { get; set; }
+        public int? level { get; set; }
         /// <summary>
         /// 动态端口的默认alterId，默认值为0。
         /// </summary>
-        public int alterId { get; set; }
+        public int? alterId { get; set; }
     }
     public class VMessClientsObject
     {
@@ -57,12 +57,12 @@ namespace XrayCoreConfigModle.Inbound
         /// <summary>
         /// 对应 policy 中 level 的值。 如不指定, 默认为 0。
         /// </summary>
-        public int level { get; set; }
+        public int? level { get; set; }
         /// <summary>
         /// 为了进一步防止被探测，一个用户可以在主 ID 的基础上，再额外生成多个 ID。这里只需要指定额外的 ID 的数量，
         /// 推荐值为 0 代表启用 VMessAEAD。 最大值 65535。这个值不能超过服务器端所指定的值。
         /// </summary>
-        public int alterId { get; set; }
+        public int? alterId { get; set; }
         /// <summary>
         /// 用户邮箱地址，用于区分不同用户的流量。
         /// </summary>

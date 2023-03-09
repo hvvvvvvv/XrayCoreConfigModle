@@ -11,18 +11,18 @@ namespace XrayCoreConfigModle.Policy
         /// <summary>
         /// 当值为 true 时，开启所有入站代理的上行流量统计。
         /// </summary>
-        public bool statsInboundUplink { get; set; }
+        public bool? statsInboundUplink { get; set; }
         /// <summary>
         /// 当值为 true 时，开启所有入站代理的下行流量统计。
         /// </summary>
-        public bool statsInboundDownlink { get; set; }
+        public bool? statsInboundDownlink { get; set; }
         /// <summary>
         /// 当值为 true 时，开启所有出站代理的上行流量统计。
         /// </summary>
-        public bool statsOutboundUplink { get; set; }
+        public bool? statsOutboundUplink { get; set; }
         /// <summary>
         /// 当值为 true 时，开启所有出站代理的下行流量统计。
         /// </summary>
-        public bool statsOutboundDownlink { get; set; }
+        public bool? statsOutboundDownlink { get; set; }
     }
 }

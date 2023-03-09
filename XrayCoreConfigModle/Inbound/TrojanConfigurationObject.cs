@@ -32,6 +32,6 @@ namespace XrayCoreConfigModle.Inbound
         /// <summary>
         /// 对应 policy 中 level 的值。 如不指定, 默认为 0。
         /// </summary>
-        public int level { get; set; }
+        public int? level { get; set; }
     }
 }

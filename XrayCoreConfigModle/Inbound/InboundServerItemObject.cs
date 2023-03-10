@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.Inbound
 {
-    //[JsonConverter(typeof(JsonConverters.DnsHostsConverter))]
+    [JsonConverter(typeof(JsonConverters.InboundServerConverter))]
     public class InboundServerItemObject
     {
         /// <summary>

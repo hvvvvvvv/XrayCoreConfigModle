@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -13,6 +14,16 @@ namespace XrayCoreConfigModle.JsonConverters
 {
     public class InboundServerConverter : JsonConverter<InboundServerItemObject>
     {
+        private static readonly Dictionary<string, Type> ServerSettingType = new()
+        {
+            {"socks",typeof(SocksConfigurationObject) },
+            {"http",typeof(HttpConfigurationObject) },
+            {"dokodemo-door",typeof(DokodemoDoorConfigurationObject) },
+            {"shadowsocks",typeof(ShadowsocksConfigurationObject) },
+            {"trojan",typeof(TrojanConfigurationObject) },
+            {"vless",typeof(VlessConfigurationObject) },
+            {"vmess",typeof(VMessConfigurationObject) }
+        };
         public override InboundServerItemObject? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             JsonNode? settingJson = default;
@@ -50,27 +61,45 @@ namespace XrayCoreConfigModle.JsonConverters
                     }
                 }
             }
-            if(settingJson != null)
+            if(settingJson != null && ret.protocol != null)
             {
-            //    switch(ret.protocol)
-            //    {
-            //        case "socks":
-            //            ret.settings = settingJson.Deserialize<SocksConfigurationObject>(options);
-            //            break;
-            //        case "http":
-            //            ret.settings = settingJson.Deserialize<HttpConfigurationObject>(options);
-            //            break;
-            //        case "dokodemo-door":
-            //            ret.settings = settingJson.Deserialize<DokodemoDoorConfigurationObject>(options);
-            //            break;
-            //    }    
+                if (ServerSettingType.TryGetValue(ret.protocol, out Type? settingType))
+                {
+                    ret.settings = (InboundConfigurationObject?)settingJson.Deserialize(settingType, options);
+                }
             }
             return ret;
         }
 
         public override void Write(Utf8JsonWriter writer, InboundServerItemObject value, JsonSerializerOptions options)
         {
-            JsonSerializer.Serialize(writer, value, options);
+            writer.WriteStartObject();
+            foreach (var properties in value.GetType().GetProperties())
+            {
+                var propertyValue = properties.GetValue(value);
+                if (propertyValue != null)
+                {
+                    if (properties.Name == nameof(value.settings))
+                    {
+                        if(value.protocol != null && ServerSettingType.ContainsKey(value.protocol))
+                        {
+                            Type settingType = ServerSettingType[value.protocol];
+                            if (settingType.IsInstanceOfType(value.settings))
+                            {
+                                writer.WritePropertyName(properties.Name);
+                                JsonSerializer.Serialize(writer, propertyValue, settingType, options);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        writer.WritePropertyName(properties.Name);
+                        JsonSerializer.Serialize(writer, propertyValue, properties.PropertyType,options);
+                    }
+                }
+                
+            }
+            writer.WriteEndObject();
         }
     }
 }

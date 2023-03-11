@@ -27,9 +27,31 @@ namespace XrayCoreConfigModle.JsonConverters
         };
         public override InboundServerItemObject? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-
-            var ret = JsonSerializer.Deserialize<InboundServerItemObject?>(ref reader, options);
-            if (ret != null && ret.settings is NoneConfigurationObject noneTypeSetting)
+            var ret = new InboundServerItemObject();
+            if (reader.TokenType != JsonTokenType.StartObject)
+            {
+                throw new JsonException();
+            }
+            while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+            {
+                if (reader.TokenType == JsonTokenType.PropertyName)
+                {
+                    var propertyName = reader.GetString();
+                    var propertyInfo = ret.GetType().GetProperties().FirstOrDefault(i => i.Name == propertyName);    
+                    
+                    reader.Read();
+                    if(propertyInfo != null)
+                    {
+                        var propertyValue = JsonSerializer.Deserialize(ref reader, propertyInfo.PropertyType, options);
+                        propertyInfo.SetValue(ret, propertyValue);
+                    }
+                    else
+                    {
+                        reader.Skip();
+                    }
+                }
+            }
+            if (ret.settings is NoneConfigurationObject noneTypeSetting)
             {
                 if(ServerSettingType.TryGetValue(ret.protocol ?? "none", out InboundServerSettingType settingType))
                 {
@@ -41,7 +63,21 @@ namespace XrayCoreConfigModle.JsonConverters
 
         public override void Write(Utf8JsonWriter writer, InboundServerItemObject value, JsonSerializerOptions options)
         {
-            JsonSerializer.Serialize(writer, value, options);
+            if(value is null)
+            {
+                return;
+            }
+            writer.WriteStartObject();
+            foreach(var propertyInfo in value.GetType().GetProperties())
+            {
+                var propertValue = propertyInfo.GetValue(value);
+                if (propertValue != null)
+                {
+                    writer.WritePropertyName(propertyInfo.Name);
+                    JsonSerializer.Serialize(writer, propertValue, propertyInfo.PropertyType, options);
+                }
+            }
+            writer.WriteEndObject();
         }
     }
 }

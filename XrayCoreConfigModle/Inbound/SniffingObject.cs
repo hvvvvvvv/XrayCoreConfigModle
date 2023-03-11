@@ -21,7 +21,7 @@ namespace XrayCoreConfigModle.Inbound
         /// 如果关闭仅使用元数据推断目标地址，此时客户端必须先发送数据，代理服务器才会实际建立连接。
         /// 此行为与需要服务器首先发起第一个消息的协议不兼容，如 SMTP 协议。
         /// </summary>
-        public string? metadataOnly { get; set; }
+        public bool? metadataOnly { get; set; }
         /// <summary>
         /// 一个域名列表，如果流量探测结果在这个列表中时，将 不会 重置目标地址
         /// </summary>

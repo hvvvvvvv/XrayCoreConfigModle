@@ -12,7 +12,7 @@ namespace TestApp
         static void Main(string[] args)
         {
 
-            JsonObject json = JsonNode.Parse(File.ReadAllText(@"C:\Users\wan\Desktop\v2rayN\guiConfigs\config.json")) as JsonObject;
+            JsonObject json = JsonNode.Parse(File.ReadAllText(@"C:\Users\wanchao\Desktop\v2rayN\guiConfigs\config.json")) as JsonObject;
             var httpserver = JsonSerializer.Deserialize<List<InboundServerItemObject>>(json["inbounds"].ToJsonString());
 
             var JsonOption = new JsonSerializerOptions()

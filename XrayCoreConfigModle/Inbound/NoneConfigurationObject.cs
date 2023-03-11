@@ -14,7 +14,7 @@ namespace XrayCoreConfigModle.Inbound
     public class NoneConfigurationObject:InboundConfigurationObject
     {
         private JsonObject? Content;
-        public NoneConfigurationObject(JsonObject? content)
+        public NoneConfigurationObject(JsonObject? content = null)
         {
             Type_ = InboundServerSettingType.None;
             Content = content;

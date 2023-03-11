@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -14,58 +15,25 @@ namespace XrayCoreConfigModle.JsonConverters
 {
     public class InboundServerConverter : JsonConverter<InboundServerItemObject>
     {
-        private static readonly Dictionary<string, Type> ServerSettingType = new()
+        private static readonly Dictionary<string, InboundServerSettingType> ServerSettingType = new()
         {
-            {"socks",typeof(SocksConfigurationObject) },
-            {"http",typeof(HttpConfigurationObject) },
-            {"dokodemo-door",typeof(DokodemoDoorConfigurationObject) },
-            {"shadowsocks",typeof(ShadowsocksConfigurationObject) },
-            {"trojan",typeof(TrojanConfigurationObject) },
-            {"vless",typeof(VlessConfigurationObject) },
-            {"vmess",typeof(VMessConfigurationObject) }
+            {"socks",InboundServerSettingType.Socks },
+            {"http",InboundServerSettingType.Http },
+            {"dokodemo-door",InboundServerSettingType.DokodemoDoor },
+            {"shadowsocks",InboundServerSettingType.Shadowsocks },
+            {"trojan",InboundServerSettingType.Trojan },
+            {"vless",InboundServerSettingType.Vless },
+            {"vmess",InboundServerSettingType.Vmess }
         };
         public override InboundServerItemObject? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            JsonNode? settingJson = default;
-            if (reader.TokenType != JsonTokenType.StartObject)
-            {
-                throw new JsonException();
-            }
 
-            var ret = new InboundServerItemObject();
-
-            while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+            var ret = JsonSerializer.Deserialize<InboundServerItemObject?>(ref reader, options);
+            if (ret != null && ret.settings is NoneConfigurationObject noneTypeSetting)
             {
-                if (reader.TokenType != JsonTokenType.PropertyName)
+                if(ServerSettingType.TryGetValue(ret.protocol ?? "none", out InboundServerSettingType settingType))
                 {
-                    throw new JsonException();
-                }
-                string propertyName = reader.GetString()!;
-                
-                var property = typeToConvert.GetProperty(propertyName, BindingFlags.Public | BindingFlags.Instance);
-
-                if (property != null && reader.Read())
-                {
-                    Type propertyType = property.PropertyType;
-                    if (reader.TokenType != JsonTokenType.Null)
-                    {
-                        if (propertyName == "settings")
-                        {
-                            settingJson = JsonSerializer.Deserialize<JsonNode>(ref reader, options);
-                        }
-                        else
-                        {
-                            object? propertyValue = JsonSerializer.Deserialize(ref reader, propertyType, options);
-                            property.SetValue(ret, propertyValue);
-                        }
-                    }
-                }
-            }
-            if(settingJson != null && ret.protocol != null)
-            {
-                if (ServerSettingType.TryGetValue(ret.protocol, out Type? settingType))
-                {
-                    ret.settings = (InboundConfigurationObject?)settingJson.Deserialize(settingType, options);
+                    ret.settings = noneTypeSetting.ConverToSpecificType(settingType);
                 }
             }
             return ret;
@@ -73,33 +41,7 @@ namespace XrayCoreConfigModle.JsonConverters
 
         public override void Write(Utf8JsonWriter writer, InboundServerItemObject value, JsonSerializerOptions options)
         {
-            writer.WriteStartObject();
-            foreach (var properties in value.GetType().GetProperties())
-            {
-                var propertyValue = properties.GetValue(value);
-                if (propertyValue != null)
-                {
-                    if (properties.Name == nameof(value.settings))
-                    {
-                        if(value.protocol != null && ServerSettingType.ContainsKey(value.protocol))
-                        {
-                            Type settingType = ServerSettingType[value.protocol];
-                            if (settingType.IsInstanceOfType(value.settings))
-                            {
-                                writer.WritePropertyName(properties.Name);
-                                JsonSerializer.Serialize(writer, propertyValue, settingType, options);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        writer.WritePropertyName(properties.Name);
-                        JsonSerializer.Serialize(writer, propertyValue, properties.PropertyType,options);
-                    }
-                }
-                
-            }
-            writer.WriteEndObject();
+            JsonSerializer.Serialize(writer, value, options);
         }
     }
 }

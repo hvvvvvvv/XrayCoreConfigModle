@@ -12,18 +12,16 @@ namespace TestApp
         static void Main(string[] args)
         {
 
-            //JsonObject json = JsonNode.Parse(File.ReadAllText(@"C:\Users\wan\Desktop\v2rayN\guiConfigs\config.json")) as JsonObject;
-            //var httpserver = JsonSerializer.Deserialize<List<InboundServerItemObject>>(json["inbounds"].ToJsonString());
+            JsonObject json = JsonNode.Parse(File.ReadAllText(@"C:\Users\wan\Desktop\v2rayN\guiConfigs\config.json")) as JsonObject;
+            var httpserver = JsonSerializer.Deserialize<List<InboundServerItemObject>>(json["inbounds"].ToJsonString());
 
             var JsonOption = new JsonSerializerOptions()
             {
                 WriteIndented = true,
                 DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
             };
-            //Console.WriteLine(JsonSerializer.Serialize(httpserver,JsonOption));
-            var jsob = new JsonObject();
-            jsob["123"] = JsonSerializer.SerializeToNode(new InboundServerItemObject(), JsonOption);
-            Console.WriteLine(jsob["123"].Deserialize<InboundServerItemObject>().protocol == null);
+            Console.WriteLine(JsonSerializer.Serialize(httpserver, JsonOption));
+
         }
     }
 }

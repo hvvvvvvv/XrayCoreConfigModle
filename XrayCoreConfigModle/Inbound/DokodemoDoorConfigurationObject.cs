@@ -13,6 +13,7 @@ namespace XrayCoreConfigModle.Inbound
     /// </summary>
     public class DokodemoDoorConfigurationObject: InboundConfigurationObject
     {
+        public DokodemoDoorConfigurationObject() => Type_ = InboundServerSettingType.DokodemoDoor;
         /// <summary>
         /// 将流量转发到此地址。可以是一个 IP 地址，形如 "1.2.3.4"，或者一个域名，形如 "xray.com"。字符串类型。
         /// </summary>

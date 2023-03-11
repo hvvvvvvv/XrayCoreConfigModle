@@ -1,6 +1,6 @@
 ﻿namespace XrayCoreConfigModle
 {
-    public enum InoundSeverSettingType
+    public enum InboundServerSettingType
     {
         None = 0,
         Http = 1,
@@ -11,7 +11,7 @@
         Vmess = 6,
         DokodemoDoor = 7,
     }
-    public enum OutoundSeverSettingType
+    public enum OutboundServerSettingType
     {
         None = 0,
         Http = 1,

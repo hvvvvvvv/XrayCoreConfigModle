@@ -8,6 +8,7 @@ namespace XrayCoreConfigModle.Inbound
 {
     public class VlessConfigurationObject: InboundConfigurationObject
     {
+        public VlessConfigurationObject() => Type_ = InboundServerSettingType.Vless;
         /// <summary>
         /// 代表一组服务端认可的用户.
         /// </summary>

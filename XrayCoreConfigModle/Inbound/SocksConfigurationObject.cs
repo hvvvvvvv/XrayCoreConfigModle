@@ -8,6 +8,7 @@ namespace XrayCoreConfigModle.Inbound
 {
     public class SocksConfigurationObject: InboundConfigurationObject
     {
+        public SocksConfigurationObject() => Type_ = InboundServerSettingType.Socks;
         /// <summary>
         /// Socks 协议的认证方式，支持 "noauth" 匿名方式和 "password" 用户密码方式。
         /// </summary>

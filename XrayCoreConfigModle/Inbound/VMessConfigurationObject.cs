@@ -10,6 +10,7 @@ namespace XrayCoreConfigModle.Inbound
 {
     public class VMessConfigurationObject: InboundConfigurationObject
     {
+        public VMessConfigurationObject() => Type_ = InboundServerSettingType.Vmess;
         /// <summary>
         /// 代表一组服务端认可的用户.
         /// </summary>

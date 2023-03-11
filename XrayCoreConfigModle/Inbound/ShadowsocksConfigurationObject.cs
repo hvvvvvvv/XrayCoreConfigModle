@@ -8,6 +8,7 @@ namespace XrayCoreConfigModle.Inbound
 {
     public class ShadowsocksConfigurationObject: InboundConfigurationObject
     {
+        public ShadowsocksConfigurationObject() => Type_ = InboundServerSettingType.Shadowsocks;
         /// <summary>
         /// 密码（必填）
         /// </summary>

@@ -8,6 +8,7 @@ namespace XrayCoreConfigModle.Inbound
 {
     public class TrojanConfigurationObject: InboundConfigurationObject
     {
+        public TrojanConfigurationObject() => Type_ = InboundServerSettingType.Trojan;
         /// <summary>
         /// 代表一组服务端认可的用户.
         /// </summary>

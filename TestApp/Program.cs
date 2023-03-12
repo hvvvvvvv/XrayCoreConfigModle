@@ -3,7 +3,6 @@ using XrayCoreConfigModle.Dns;
 using XrayCoreConfigModle;
 using System.IO;
 using System.Text.Json.Nodes;
-using XrayCoreConfigModle.Inbound;
 
 namespace TestApp
 {

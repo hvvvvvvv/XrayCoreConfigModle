@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle
 {
-    public class MainConfiguration
+    public class MainConfiguration 
     {
         /// <summary>
         /// 日志配置，控制 Xray 输出日志的方式.

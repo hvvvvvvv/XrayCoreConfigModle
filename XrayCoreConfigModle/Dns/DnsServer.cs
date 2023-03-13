@@ -2,26 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.Dns
 {
+    [JsonConverter(typeof(JsonConverters.DnsServerConverter))]
     public abstract class DnsServer
     {
-        private DnsServerInputMode Mode;
-        public DnsServerInputMode GetMode() => Mode;
-        public DnsServer(DnsServerInputMode mode)
+        public DnsServer()
         {
-            Mode = mode;
-        }
-        public Type GetInstanceType(DnsServer server)
-        {
-            return server.GetMode() switch
-            {
-                DnsServerInputMode.Object => typeof(ServerObject),
-                DnsServerInputMode.String => typeof(ServerString),
-                _ => throw new ArgumentException()
-            };
         }
     }
 }

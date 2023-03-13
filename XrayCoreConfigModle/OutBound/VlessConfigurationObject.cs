@@ -8,14 +8,13 @@ namespace XrayCoreConfigModle.OutBound
 {
     public class VlessConfigurationObject: OutboundConfigurationObject
     {
-        public VlessConfigurationObject(): base(OutboundServerSettingType.Vless) { }
         /// <summary>
         /// 表示 VLESS 服务器列表，包含一组指向服务端的配置, 其中每一项是一个服务器配置。
         /// </summary>
         public List<VlessServerObject>? vnext { get; set; }
     }
 
-    public class VlessServerObject
+    public class VlessServerObject 
     {
         /// <summary>
         /// 服务端地址，指向服务端，支持域名、IPv4、IPv6。
@@ -30,7 +29,7 @@ namespace XrayCoreConfigModle.OutBound
         /// </summary>
         public List<VlessUserObject>? users { get; set; }
     }
-    public class VlessUserObject
+    public class VlessUserObject 
     {
         /// <summary>
         /// VLESS 的用户 ID，可以是任意小于 30 字节的字符串, 也可以是一个合法的 UUID. 自定义字符串和其映射的 UUID 是等价的

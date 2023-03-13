@@ -8,10 +8,9 @@ namespace XrayCoreConfigModle.OutBound
 {
     public class TrojanConfigurationObject: OutboundConfigurationObject
     {
-        public TrojanConfigurationObject(): base(OutboundServerSettingType.Trojan) { }
         public List<TrojanServerObject>? servers { get; set; }
     }
-    public class TrojanServerObject
+    public class TrojanServerObject 
     {
         /// <summary>
         /// 服务端地址，支持 IPv4、IPv6 和域名。必填。

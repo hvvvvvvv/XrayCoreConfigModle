@@ -11,7 +11,7 @@ namespace XrayCoreConfigModle
     /// XrayCore内置DNS服务器配置
     /// 详情参阅 https://github.com/XTLS/Xray-docs-next/blob/main/docs/config/dns.md#dnsobject
     /// </summary>
-    public class DnsObject
+    public class DnsObject 
     {
         /// <summary>
         /// 静态 IP 列表，其值为一系列"域名": ["地址 1","地址 2"]。其中地址可以是 IP 或者域名。

@@ -4,7 +4,7 @@
     /// 日志配置，控制 Xray 输出日志的方式.
     /// Xray 有两种日志, 访问日志和错误日志, 你可以分别配置两种日志的输出方式.
     /// </summary>
-    public class LogObject
+    public class LogObject 
     {
         /// <summary>
         /// 访问日志的文件地址，其值是一个合法的文件地址，如"/var/log/Xray/access.log"（Linux）

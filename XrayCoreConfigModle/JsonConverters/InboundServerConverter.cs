@@ -14,7 +14,7 @@ using static System.Net.WebRequestMethods;
 
 namespace XrayCoreConfigModle.JsonConverters
 {
-    public class InboundServerConverter : JsonConverter<InboundServerItemObject>
+    internal class InboundServerConverter : JsonConverter<InboundServerItemObject>
     {
         public override InboundServerItemObject? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
@@ -49,18 +49,17 @@ namespace XrayCoreConfigModle.JsonConverters
             }
             if (ret.settings is UnknownConfigurationObject unknownTypeSetting)
             {
-                var settingType = ret.protocol switch
+                ret.settings = ret.protocol switch
                 {
-                    "socks" => InboundServerSettingType.Socks,
-                    "http" => InboundServerSettingType.Http,
-                    "dokodemo-door" => InboundServerSettingType.DokodemoDoor,
-                    "shadowsocks" => InboundServerSettingType.Shadowsocks,
-                    "trojan" => InboundServerSettingType.Trojan,
-                    "vless" => InboundServerSettingType.Vless,
-                    "vmess" => InboundServerSettingType.Vmess,
-                    _ => InboundServerSettingType.Unknown
+                    "socks" => unknownTypeSetting.ConverToSpecificType<SocksConfigurationObject>(),
+                    "http" => unknownTypeSetting.ConverToSpecificType<HttpConfigurationObject>(),
+                    "dokodemo-door" => unknownTypeSetting.ConverToSpecificType<DokodemoDoorConfigurationObject>(),
+                    "shadowsocks" => unknownTypeSetting.ConverToSpecificType<ShadowsocksConfigurationObject>(),
+                    "trojan" => unknownTypeSetting.ConverToSpecificType<TrojanConfigurationObject>(),
+                    "vless" => unknownTypeSetting.ConverToSpecificType<VlessConfigurationObject>(),
+                    "vmess" => unknownTypeSetting.ConverToSpecificType<VMessConfigurationObject>(),
+                    _ => unknownTypeSetting
                 };
-                ret.settings = unknownTypeSetting.ConverToSpecificType(settingType);
             }
             return ret;
         }

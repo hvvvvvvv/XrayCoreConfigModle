@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle
 {
-    public class PolicyObject
+    public class PolicyObject 
     {
         /// <summary>
         /// 每个键是一个字符串形式的数字（JSON 的要求），

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.ProtocolSetting
 {
-    public class TcpObject
+    public class TcpObject 
     {
         /// <summary>
         /// 仅用于 inbound，指示是否接收 PROXY protocol。
@@ -22,7 +22,7 @@ namespace XrayCoreConfigModle.ProtocolSetting
         /// </summary>
         public HeaderObject? header { get; set; }
     }
-    public class HeaderObject
+    public class HeaderObject 
     {
         public HeaderObject(string _type)
         {

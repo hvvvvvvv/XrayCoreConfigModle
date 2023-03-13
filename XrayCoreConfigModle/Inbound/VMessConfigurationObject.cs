@@ -10,7 +10,6 @@ namespace XrayCoreConfigModle.Inbound
 {
     public class VMessConfigurationObject: InboundConfigurationObject
     {
-        public VMessConfigurationObject() => Type_ = InboundServerSettingType.Vmess;
         /// <summary>
         /// 代表一组服务端认可的用户.
         /// </summary>
@@ -31,14 +30,14 @@ namespace XrayCoreConfigModle.Inbound
         /// </summary>
         public bool? disableInsecureEncryption { get; set; }
     }
-    public class DetourObject
+    public class DetourObject 
     {
         /// <summary>
         /// 一个 inbound 的tag, 指定的 inbound 的必须是使用 VMess 协议的 inbound.
         /// </summary>
         public string? to { get; set; }
     }
-    public class DefaultClientsObject
+    public class DefaultClientsObject 
     {
         /// <summary>
         ///  对应 policy 中 level 的值。 如不指定, 默认为 0。
@@ -49,7 +48,7 @@ namespace XrayCoreConfigModle.Inbound
         /// </summary>
         public int? alterId { get; set; }
     }
-    public class VMessClientsObject
+    public class VMessClientsObject 
     {
         /// <summary>
         /// Vmess 的用户 ID，可以是任意小于 30 字节的字符串, 也可以是一个合法的 UUID.

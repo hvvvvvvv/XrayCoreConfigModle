@@ -13,7 +13,6 @@ namespace XrayCoreConfigModle.OutBound
     /// </summary>
     public class DnsConfiguration: OutboundConfigurationObject
     {
-        public DnsConfiguration(): base(OutboundServerSettingType.Dns) { }
         /// <summary>
         /// 修改 DNS 流量的传输层协议，可选的值有 "tcp" 和 "udp"。当不指定时，保持来源的传输方式不变。
         /// </summary>

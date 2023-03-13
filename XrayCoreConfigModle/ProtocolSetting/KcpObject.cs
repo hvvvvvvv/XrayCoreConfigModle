@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.ProtocolSetting
 {
-    public class KcpObject
+    public class KcpObject 
     {
         /// <summary>
         /// 最大传输单元（maximum transmission unit） 请选择一个介于 576 - 1460 之间的值。
@@ -55,7 +55,7 @@ namespace XrayCoreConfigModle.ProtocolSetting
         /// </summary>
         public string? seed { get; set; }
     }
-    public class KcpHeaderObject
+    public class KcpHeaderObject 
     {
         /// <summary>
         /// 伪装类型

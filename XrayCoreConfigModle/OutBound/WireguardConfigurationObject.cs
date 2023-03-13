@@ -8,7 +8,6 @@ namespace XrayCoreConfigModle.OutBound
 {
     public class WireguardConfigurationObject: OutboundConfigurationObject
     {
-        public WireguardConfigurationObject(): base(OutboundServerSettingType.WireGuard) { }
         /// <summary>
         /// 用户私钥。必填。
         /// </summary>
@@ -30,7 +29,7 @@ namespace XrayCoreConfigModle.OutBound
         /// </summary>
         public int? workers { get; set; }
     }
-    public class WireguardPeers
+    public class WireguardPeers 
     {
         /// <summary>
         /// 服务器地址, 必填

@@ -9,7 +9,7 @@ using XrayCoreConfigModle.Inbound;
 namespace XrayCoreConfigModle
 {
     [JsonConverter(typeof(JsonConverters.InboundServerConverter))]
-    public class InboundServerItemObject
+    public class InboundServerItemObject 
     {
         /// <summary>
         /// 监听地址，IP 地址或 Unix domain socket，默认值为 "0.0.0.0"，表示接收所有网卡上的连接.

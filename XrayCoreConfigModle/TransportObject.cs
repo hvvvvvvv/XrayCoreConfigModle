@@ -8,7 +8,7 @@ using XrayCoreConfigModle.ProtocolSetting;
 
 namespace XrayCoreConfigModle
 {
-    public class TransportObject
+    public class TransportObject 
     {
         /// <summary>
         /// 针对 TCP 连接的配置

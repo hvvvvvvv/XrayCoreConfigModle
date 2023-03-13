@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.ProtocolSetting
 {
-    public class DomainSocketObject
+    public class DomainSocketObject 
     {
         /// <summary>
         /// 一个合法的文件路径。

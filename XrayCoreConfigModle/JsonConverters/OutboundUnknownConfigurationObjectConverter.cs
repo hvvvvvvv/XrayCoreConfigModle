@@ -10,20 +10,16 @@ using XrayCoreConfigModle.OutBound;
 
 namespace XrayCoreConfigModle.JsonConverters
 {
-    public class OutboundUnknownConfigurationObjectConverter : JsonConverter<UnknownConfigurationObject>
+    internal class OutboundUnknownConfigurationObjectConverter : JsonConverter<UnknownConfigurationObject>
     {
         public override UnknownConfigurationObject? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            var value = JsonSerializer.Deserialize<JsonObject>(ref reader, options);
-            return new(value);
+            return new(JsonSerializer.Deserialize<JsonObject>(ref reader, options));
         }
 
         public override void Write(Utf8JsonWriter writer, UnknownConfigurationObject value, JsonSerializerOptions options)
         {
-            if(value != null)
-            {
-                value.JsonWriteHandle(writer, options);
-            }
+            value.JsonWriteHandle(writer, options);
         }
     }
 }

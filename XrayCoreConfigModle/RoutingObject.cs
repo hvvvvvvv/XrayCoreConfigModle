@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle
 {
-    public class RoutingObject
+    public class RoutingObject 
     {
         /// <summary>
         /// 域名解析策略，根据不同的设置使用不同的策略。

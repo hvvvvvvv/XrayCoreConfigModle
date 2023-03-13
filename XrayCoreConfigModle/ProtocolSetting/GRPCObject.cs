@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.ProtocolSetting
 {
-    public class GRPCObject
+    public class GRPCObject 
     {
         /// <summary>
         /// 指定服务名称，类似于 HTTP/2 中的 Path。 客户端会使用此名称进行通信，服务端会验证服务名称是否匹配。

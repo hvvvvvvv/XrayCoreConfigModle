@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.ProtocolSetting
 {
-    public class SockoptObject
+    public class SockoptObject 
     {
         /// <summary>
         /// 当其值非零时，在 ountbound 连接以此数值上标记 SO_MARK

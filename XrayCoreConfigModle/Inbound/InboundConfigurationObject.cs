@@ -10,50 +10,7 @@ using System.Threading.Tasks;
 namespace XrayCoreConfigModle.Inbound
 {
     [JsonConverter(typeof(JsonConverters.InboundConfigurationConverter))]
-    public abstract class InboundConfigurationObject
+    public abstract class InboundConfigurationObject 
     {
-        protected  InboundServerSettingType Type_ { get; set; }
-        public InboundServerSettingType GetConfigurationType() => Type_;
-        public InboundConfigurationObject()
-        {
-        }
-        public static Type GetInstanceType(InboundServerSettingType type)
-        {
-            Type ret;
-            switch (type)
-            {
-                case InboundServerSettingType.Http:
-                    ret = typeof(HttpConfigurationObject);
-                    break;
-                case InboundServerSettingType.Socks:
-                    ret = typeof(SocksConfigurationObject);
-                    break;
-                case InboundServerSettingType.Shadowsocks:
-                    ret = typeof(ShadowsocksConfigurationObject);
-                    break;
-                case InboundServerSettingType.Trojan:
-                    ret = typeof(TrojanConfigurationObject);
-                    break;
-                case InboundServerSettingType.Vmess:
-                    ret = typeof(VMessConfigurationObject);
-                    break;
-                case InboundServerSettingType.Vless:
-                    ret = typeof(VlessConfigurationObject);
-                    break;
-                case InboundServerSettingType.DokodemoDoor:
-                    ret = typeof(DokodemoDoorConfigurationObject);
-                    break;
-                case InboundServerSettingType.Unknown:
-                    ret = typeof(UnknownConfigurationObject);
-                    break;
-                default:
-                    throw new ArgumentException(nameof(type));
-            }
-            return ret;
-        }
-        public static Type GetInstanceType(InboundConfigurationObject obj)
-        {
-            return GetInstanceType(obj.GetConfigurationType());
-        }
     }
 }

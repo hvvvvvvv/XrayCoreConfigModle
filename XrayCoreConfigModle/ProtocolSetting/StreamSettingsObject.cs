@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.ProtocolSetting
 {
-    public class StreamSettingsObject
+    public class StreamSettingsObject 
     {
         /// <summary>
         /// "tcp" | "kcp" | "ws" | "http" | "domainsocket" | "quic" | "grpc"

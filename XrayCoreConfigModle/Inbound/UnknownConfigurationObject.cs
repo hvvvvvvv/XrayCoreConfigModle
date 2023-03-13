@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,24 +15,28 @@ namespace XrayCoreConfigModle.Inbound
     public class UnknownConfigurationObject:InboundConfigurationObject
     {
         private JsonObject? Content;
-        public UnknownConfigurationObject(JsonObject? content = null)
+        internal UnknownConfigurationObject(JsonObject? content = null)
         {
-            Type_ = InboundServerSettingType.Unknown;
             Content = content;
         }
-        public InboundConfigurationObject? ConverToSpecificType(InboundServerSettingType _type)
-        {
-            if(_type == InboundServerSettingType.Unknown)
+        public InboundConfigurationObject? ConverToSpecificType<T>() where T: InboundConfigurationObject
+        {          
+            if(typeof(T) == typeof(UnknownConfigurationObject))
             {
                 return this;
             }
-            return Content.Deserialize(GetInstanceType(_type)) as InboundConfigurationObject;
+            return Content?.Deserialize<T>();
         }
         public void JsonWriterHandle(Utf8JsonWriter writer,JsonSerializerOptions options)
         {
-            if(Content != null)
+            if (Content != null)
             {
                 JsonSerializer.Serialize(writer, Content,options);
+            }
+            else
+            {
+                writer.WriteStartObject();
+                writer.WriteEndObject();
             }
         }
         

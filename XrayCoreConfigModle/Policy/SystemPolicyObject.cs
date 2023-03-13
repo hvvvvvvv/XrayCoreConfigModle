@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.Policy
 {
-    public class SystemPolicyObject
+    public class SystemPolicyObject 
     {
         /// <summary>
         /// 当值为 true 时，开启所有入站代理的上行流量统计。

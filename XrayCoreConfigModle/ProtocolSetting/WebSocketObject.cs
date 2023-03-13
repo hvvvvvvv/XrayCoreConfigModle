@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.ProtocolSetting
 {
-    public class WebSocketObject
+    public class WebSocketObject 
     {
         /// <summary>
         /// 仅用于 inbound，指示是否接收 PROXY protocol。

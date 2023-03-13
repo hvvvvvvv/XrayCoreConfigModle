@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.ProtocolSetting
 {
-    public class QuicObject
+    public class QuicObject 
     {
         /// <summary>
         /// 加密方式:"none" | "aes-128-gcm" | "chacha20-poly1305"
@@ -27,7 +27,7 @@ namespace XrayCoreConfigModle.ProtocolSetting
     }
 
 
-    public class QuicHeaderObject
+    public class QuicHeaderObject 
     {
         /// <summary>
         /// 伪装类型，可选的值参阅：https://github.com/XTLS/Xray-docs-next/blob/main/docs/config/transports/quic.md#headerobject

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.ProtocolSetting
 {
-    public class HttpObject
+    public class HttpObject 
     {
         /// <summary>
         /// 一个字符串数组，每一个元素是一个域名。

@@ -11,15 +11,9 @@ namespace TestApp
         static void Main(string[] args)
         {
 
-            JsonObject json = JsonNode.Parse(File.ReadAllText(@"C:\Users\wan\Desktop\v2rayN\guiConfigs\config.json")) as JsonObject;
-            var httpserver = JsonSerializer.Deserialize<MainConfiguration>(json.ToJsonString());
+            var xrayConfig = JsonHandler.JsonDeserializeFromFile<MainConfiguration>(@"C:\Users\wanchao\Desktop\v2rayN\guiConfigs\config.json");
 
-            var JsonOption = new JsonSerializerOptions()
-            {
-                WriteIndented = true,
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-            };
-            Console.WriteLine(JsonSerializer.Serialize(httpserver, JsonOption));
+            Console.WriteLine(JsonHandler.JsonSerializeToString(xrayConfig.inbounds));
 
         }
     }

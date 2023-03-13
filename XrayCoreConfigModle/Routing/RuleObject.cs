@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.Routing
 {
-    public class RuleObject
+    public class RuleObject 
     {
         /// <summary>
         /// 域名匹配算法，根据不同的设置使用不同的算法。此处选项优先级高于 RoutingObject 中配置的 domainMatcher。

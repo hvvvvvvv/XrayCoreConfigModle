@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.Policy
 {
-    public class LevelPolicyObject
+    public class LevelPolicyObject 
     {
         /// <summary>
         /// 连接建立时的握手时间限制。单位为秒。默认值为 4。

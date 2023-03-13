@@ -8,14 +8,13 @@ namespace XrayCoreConfigModle.OutBound
 {
     public class SocksConfigurationObject: OutboundConfigurationObject
     {
-        public SocksConfigurationObject(): base(OutboundServerSettingType.Socks) { }
         /// <summary>
         /// Socks 服务器列表，其中每一项是一个服务器配置。
         /// </summary>
         public List<SocksServerObject>? servers { get; set; }
     }
 
-    public class SocksServerObject
+    public class SocksServerObject 
     {
         /// <summary>
         /// 服务器地址, 必填
@@ -30,7 +29,7 @@ namespace XrayCoreConfigModle.OutBound
         /// </summary>
         public List<ScoksUserObject>? users { get; set; }
     }
-    public class ScoksUserObject
+    public class ScoksUserObject 
     {
         /// <summary>
         /// 用户名

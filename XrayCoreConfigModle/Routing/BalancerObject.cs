@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.Routing
 {
-    public class BalancerObject
+    public class BalancerObject 
     {
         /// <summary>
         /// 此负载均衡器的标识，用于匹配 RuleObject 中的 balancerTag

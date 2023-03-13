@@ -8,7 +8,6 @@ namespace XrayCoreConfigModle.Inbound
 {
     public class VlessConfigurationObject: InboundConfigurationObject
     {
-        public VlessConfigurationObject() => Type_ = InboundServerSettingType.Vless;
         /// <summary>
         /// 代表一组服务端认可的用户.
         /// </summary>
@@ -22,7 +21,7 @@ namespace XrayCoreConfigModle.Inbound
         /// </summary>
         public List<FallbackObject>? fallbacks { get; set; }
     }
-    public class VlessClientsObject
+    public class VlessClientsObject 
     {
         /// <summary>
         /// VLESS 的用户 ID，可以是任意小于 30 字节的字符串, 也可以是一个合法的 UUID.

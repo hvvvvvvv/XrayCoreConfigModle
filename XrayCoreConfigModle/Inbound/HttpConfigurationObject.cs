@@ -9,7 +9,6 @@ namespace XrayCoreConfigModle.Inbound
 {
     public class HttpConfigurationObject: InboundConfigurationObject
     {
-        public HttpConfigurationObject() => Type_ = InboundServerSettingType.Http;
         /// <summary>
         /// 连接空闲的时间限制。单位为秒。默认值为 300, 0 表示不限时
         /// </summary>
@@ -28,7 +27,7 @@ namespace XrayCoreConfigModle.Inbound
         /// </summary>
         public int? userLevel { get; set; }
     }
-    public class HttpAccountObject
+    public class HttpAccountObject 
     {       
         public string? user { get; set; }
         public string? pass { get; set; }

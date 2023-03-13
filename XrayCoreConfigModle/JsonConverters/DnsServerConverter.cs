@@ -9,7 +9,7 @@ using XrayCoreConfigModle.Dns;
 
 namespace XrayCoreConfigModle.JsonConverters
 {
-    public class DnsServerConverter : JsonConverter<DnsServer>
+    internal class DnsServerConverter : JsonConverter<DnsServer>
     {
         public override DnsServer? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
@@ -41,6 +41,11 @@ namespace XrayCoreConfigModle.JsonConverters
             else if(value is ServerString serverString)
             {
                 serverString.JsonWriteHandle(writer, options);
+            }
+            else if(value is null)
+            {
+                writer.WriteStartObject();
+                writer.WriteEndObject();
             }
             else
             {

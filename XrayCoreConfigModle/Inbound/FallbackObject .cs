@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.Inbound
 {
-    public class FallbackObject
+    public class FallbackObject 
     {
         /// <summary>
         /// 尝试匹配 TLS SNI(Server Name Indication)，空为任意，默认为 ""

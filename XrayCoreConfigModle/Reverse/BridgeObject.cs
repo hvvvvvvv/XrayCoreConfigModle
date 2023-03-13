@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.Reverse
 {
-    public class BridgeObject
+    public class BridgeObject 
     {
         /// <summary>
         /// 所有由 bridge 发出的连接，都会带有这个标识。可以在 路由配置 中使用 inboundTag 进行识别。

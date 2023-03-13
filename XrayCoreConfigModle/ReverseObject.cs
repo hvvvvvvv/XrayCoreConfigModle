@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle
 {
-    public class ReverseObject
+    public class ReverseObject 
     {
         /// <summary>
         /// 每一项表示一个 bridge。每个 bridge 的配置是一个 BridgeObject。

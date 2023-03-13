@@ -8,13 +8,12 @@ namespace XrayCoreConfigModle.OutBound
 {
     public class ShadowsocksConfigurationObject: OutboundConfigurationObject
     {
-        public ShadowsocksConfigurationObject(): base(OutboundServerSettingType.Shadowsocks) { }
         /// <summary>
         /// 代表一组 Shadowsocks 服务端设置
         /// </summary>
         public List<ShadowsocksServerObject>? servers { get; set; }
     }
-    public class ShadowsocksServerObject
+    public class ShadowsocksServerObject 
     {
         /// <summary>
         /// 邮件地址，可选，用于标识用户

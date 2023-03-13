@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.JsonConverters
 {
-    public class FakeDNSObjectConverter : JsonConverter<FakeDNSObject>
+    internal class FakeDNSObjectConverter : JsonConverter<FakeDNSObject>
     {
         public override FakeDNSObject? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

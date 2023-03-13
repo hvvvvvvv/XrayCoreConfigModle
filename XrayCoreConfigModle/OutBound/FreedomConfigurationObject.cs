@@ -8,7 +8,6 @@ namespace XrayCoreConfigModle.OutBound
 {
     public class FreedomConfigurationObject: OutboundConfigurationObject
     {
-        public FreedomConfigurationObject(): base(OutboundServerSettingType.Freedom) { }
         /// <summary>
         ///  "AsIs" | "UseIP" | "UseIPv4" | "UseIPv6"
         ///  在目标地址为域名时, 配置相应的值, Freedom 的行为模式如下:

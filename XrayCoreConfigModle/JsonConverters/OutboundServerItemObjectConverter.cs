@@ -10,7 +10,7 @@ using XrayCoreConfigModle.OutBound;
 
 namespace XrayCoreConfigModle.JsonConverters
 {
-    public class OutboundServerItemObjectConverter : JsonConverter<OutboundServerItemObject>
+    internal class OutboundServerItemObjectConverter : JsonConverter<OutboundServerItemObject>
     {
         public override OutboundServerItemObject? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
@@ -42,21 +42,20 @@ namespace XrayCoreConfigModle.JsonConverters
             }
             if(retValue.settings is UnknownConfigurationObject unknownConfiguration)
             {
-                var settingTpe = retValue.protocol switch
+                retValue.settings = retValue.protocol switch
                 {
-                    "http" => OutboundServerSettingType.Http,
-                    "socks" => OutboundServerSettingType.Socks,
-                    "shadowsocks" => OutboundServerSettingType.Shadowsocks,
-                    "trojan" => OutboundServerSettingType.Trojan,
-                    "vmess" => OutboundServerSettingType.Vmess,
-                    "vless" => OutboundServerSettingType.Vless,
-                    "dns" => OutboundServerSettingType.Dns,
-                    "wireguard" => OutboundServerSettingType.WireGuard,
-                    "freedom" => OutboundServerSettingType.Freedom,
-                    "blackhole" => OutboundServerSettingType.Blackhole,
-                    _ => OutboundServerSettingType.Unknown,
+                    "http" => unknownConfiguration.ConvertToSpecificType<HttpConfigurationObject>(),
+                    "socks" => unknownConfiguration.ConvertToSpecificType<SocksConfigurationObject>(),
+                    "shadowsocks" => unknownConfiguration.ConvertToSpecificType<ShadowsocksConfigurationObject>(),
+                    "trojan" => unknownConfiguration.ConvertToSpecificType<TrojanConfigurationObject>(),
+                    "vmess" => unknownConfiguration.ConvertToSpecificType<VMessConfigurationObject>(),
+                    "vless" => unknownConfiguration.ConvertToSpecificType<VlessConfigurationObject>(),
+                    "dns" => unknownConfiguration.ConvertToSpecificType<DnsConfiguration>(),
+                    "wireguard" => unknownConfiguration.ConvertToSpecificType<WireguardConfigurationObject>(),
+                    "freedom" => unknownConfiguration.ConvertToSpecificType<FreedomConfigurationObject>(),
+                    "blackhole" => unknownConfiguration.ConvertToSpecificType<BlackholeConfigurationObject>(),
+                    _ => unknownConfiguration
                 };
-                retValue.settings = unknownConfiguration.ConvertToSpecificType(settingTpe);
             }
             return retValue;
         }

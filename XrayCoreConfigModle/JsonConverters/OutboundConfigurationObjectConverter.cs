@@ -9,7 +9,7 @@ using XrayCoreConfigModle.OutBound;
 
 namespace XrayCoreConfigModle.JsonConverters
 {
-    public class OutboundConfigurationObjectConverter : JsonConverter<OutboundConfigurationObject>
+    internal class OutboundConfigurationObjectConverter : JsonConverter<OutboundConfigurationObject>
     {
         public override OutboundConfigurationObject? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
@@ -18,8 +18,7 @@ namespace XrayCoreConfigModle.JsonConverters
 
         public override void Write(Utf8JsonWriter writer, OutboundConfigurationObject value, JsonSerializerOptions options)
         {
-            var type = OutboundConfigurationObject.GetInstanceType(value);
-            JsonSerializer.Serialize(writer, value, type, options);
+            JsonSerializer.Serialize(writer, value, value.GetType(), options);
         }
     }
 }

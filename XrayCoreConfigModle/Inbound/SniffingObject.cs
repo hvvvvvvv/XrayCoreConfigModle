@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.Inbound
 {
-    public class SniffingObject
+    public class SniffingObject 
     {
         /// <summary>
         /// 是否开启流量探测

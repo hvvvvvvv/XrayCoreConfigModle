@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle
 {
-    public class ApiObject
+    public class ApiObject 
     {
         /// <summary>
         /// 出站代理标识。

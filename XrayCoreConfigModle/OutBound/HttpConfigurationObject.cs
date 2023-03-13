@@ -8,14 +8,13 @@ namespace XrayCoreConfigModle.OutBound
 {
     public class HttpConfigurationObject: OutboundConfigurationObject
     {
-        public HttpConfigurationObject(): base(OutboundServerSettingType.Http) { }
         /// <summary>
         /// HTTP 服务器列表，其中每一项是一个服务器配置，若配置多个，循环使用 (RoundRobin)。
         /// </summary>
         public List<HttpServerObject>? servers { get; set; }
     }
 
-    public class HttpServerObject
+    public class HttpServerObject 
     {
         /// <summary>
         /// HTTP 代理服务器地址，必填。
@@ -30,7 +29,7 @@ namespace XrayCoreConfigModle.OutBound
         /// </summary>
         public List<HttpAccountObject>? users { get; set; }
     }
-    public class HttpAccountObject
+    public class HttpAccountObject 
     {
         /// <summary>
         /// 用户名

@@ -13,23 +13,28 @@ namespace XrayCoreConfigModle.OutBound
     public class UnknownConfigurationObject: OutboundConfigurationObject
     {
         private JsonObject? Content { get; set; }
-        public UnknownConfigurationObject(JsonObject? _content = null) : base(OutboundServerSettingType.Unknown)
+        internal UnknownConfigurationObject(JsonObject? _content = null)
         {
             Content = _content;
         }
-        public OutboundConfigurationObject? ConvertToSpecificType(OutboundServerSettingType type)
+        public OutboundConfigurationObject? ConvertToSpecificType<T>() where T : OutboundConfigurationObject
         {
-            if(type ==GetConfigurationType())
+            if(typeof(T) == typeof(UnknownConfigurationObject))
             {
                 return this;
             }
-            return Content.Deserialize(GetInstanceType(type)) as OutboundConfigurationObject;
+            return Content.Deserialize<T>();
         }
         public void JsonWriteHandle(Utf8JsonWriter writer,JsonSerializerOptions options)
         {
             if(Content != null)
             {
                 JsonSerializer.Serialize(writer, Content, options);
+            }
+            else
+            {
+                writer.WriteStartObject();
+                writer.WriteEndObject();
             }
         }
 

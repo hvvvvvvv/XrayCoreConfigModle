@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.ProtocolSetting
 {
-    public class TLSObject
+    public class TLSObject 
     {
         /// <summary>
         /// 指定服务器端证书的域名，在连接由 IP 建立时有用。
@@ -74,7 +74,7 @@ namespace XrayCoreConfigModle.ProtocolSetting
         public List<string>? pinnedPeerCertificateChainSha256 { get; set; }
     }
 
-    public class CertificateObject
+    public class CertificateObject 
     {
         /// <summary>
         /// OCSP 装订更新，与证书热重载的时间间隔。 单位：秒。默认值为 3600，即一小时。

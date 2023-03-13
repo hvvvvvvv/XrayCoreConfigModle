@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.ProtocolSetting.Http
 {
-    public class HTTPRequestObject
+    public class HTTPRequestObject 
     {
         /// <summary>
         /// HTTP 版本，默认值为 "1.1"。

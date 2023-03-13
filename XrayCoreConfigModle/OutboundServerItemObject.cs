@@ -9,7 +9,7 @@ using XrayCoreConfigModle.JsonConverters;
 namespace XrayCoreConfigModle
 {
     [JsonConverter(typeof(OutboundServerItemObjectConverter))]
-    public class OutboundServerItemObject
+    public class OutboundServerItemObject 
     {
         /// <summary>
         /// 用于发送数据的 IP 地址，当主机有多个 IP 地址时有效，默认值为 "0.0.0.0"。

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.OutBound
 {
-    public class ShadowsocksConfigurationObject
+    public class ShadowsocksConfigurationObject: OutboundConfigurationObject
     {
+        public ShadowsocksConfigurationObject(): base(OutboundServerSettingType.Shadowsocks) { }
         /// <summary>
         /// 代表一组 Shadowsocks 服务端设置
         /// </summary>

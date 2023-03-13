@@ -10,28 +10,24 @@ using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using XrayCoreConfigModle.Inbound;
+using static System.Net.WebRequestMethods;
 
 namespace XrayCoreConfigModle.JsonConverters
 {
     public class InboundServerConverter : JsonConverter<InboundServerItemObject>
     {
-        private static readonly Dictionary<string, InboundServerSettingType> ServerSettingType = new()
-        {
-            {"socks",InboundServerSettingType.Socks },
-            {"http",InboundServerSettingType.Http },
-            {"dokodemo-door",InboundServerSettingType.DokodemoDoor },
-            {"shadowsocks",InboundServerSettingType.Shadowsocks },
-            {"trojan",InboundServerSettingType.Trojan },
-            {"vless",InboundServerSettingType.Vless },
-            {"vmess",InboundServerSettingType.Vmess }
-        };
         public override InboundServerItemObject? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            var ret = new InboundServerItemObject();
+            if (reader.TokenType == JsonTokenType.Null)
+            {
+                return null;
+            }
             if (reader.TokenType != JsonTokenType.StartObject)
             {
                 throw new JsonException();
             }
+
+            var ret = new InboundServerItemObject();            
             while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
             {
                 if (reader.TokenType == JsonTokenType.PropertyName)
@@ -51,12 +47,20 @@ namespace XrayCoreConfigModle.JsonConverters
                     }
                 }
             }
-            if (ret.settings is NoneConfigurationObject noneTypeSetting)
+            if (ret.settings is UnknownConfigurationObject unknownTypeSetting)
             {
-                if(ServerSettingType.TryGetValue(ret.protocol ?? "none", out InboundServerSettingType settingType))
+                var settingType = ret.protocol switch
                 {
-                    ret.settings = noneTypeSetting.ConverToSpecificType(settingType);
-                }
+                    "socks" => InboundServerSettingType.Socks,
+                    "http" => InboundServerSettingType.Http,
+                    "dokodemo-door" => InboundServerSettingType.DokodemoDoor,
+                    "shadowsocks" => InboundServerSettingType.Shadowsocks,
+                    "trojan" => InboundServerSettingType.Trojan,
+                    "vless" => InboundServerSettingType.Vless,
+                    "vmess" => InboundServerSettingType.Vmess,
+                    _ => InboundServerSettingType.Unknown
+                };
+                ret.settings = unknownTypeSetting.ConverToSpecificType(settingType);
             }
             return ret;
         }

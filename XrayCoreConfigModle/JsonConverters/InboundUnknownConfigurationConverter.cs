@@ -10,15 +10,15 @@ using XrayCoreConfigModle.Inbound;
 
 namespace XrayCoreConfigModle.JsonConverters
 {
-    public class NoneConfigurationConverter : JsonConverter<NoneConfigurationObject>
+    public class InboundUnknownConfigurationConverter : JsonConverter<UnknownConfigurationObject>
     {
-        public override NoneConfigurationObject? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override UnknownConfigurationObject? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             var Jobj = JsonSerializer.Deserialize<JsonNode>(ref reader, options);
-            return new NoneConfigurationObject(Jobj!.AsObject());
+            return new UnknownConfigurationObject(Jobj!.AsObject());
         }
 
-        public override void Write(Utf8JsonWriter writer, NoneConfigurationObject value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, UnknownConfigurationObject value, JsonSerializerOptions options)
         {
             value.JsonWriterHandle(writer, options);
         }

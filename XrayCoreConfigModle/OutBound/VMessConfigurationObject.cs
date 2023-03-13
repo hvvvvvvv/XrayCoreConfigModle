@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.OutBound
 {
-    public class VMessConfigurationObject
+    public class VMessConfigurationObject: OutboundConfigurationObject
     {
+        public VMessConfigurationObject(): base(OutboundServerSettingType.Vmess) { }
         /// <summary>
         /// 包含一组的服务端配置.
         /// </summary>

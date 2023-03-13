@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.Inbound
 {
-    [JsonConverter(typeof(JsonConverters.ConfigurationConverter))]
+    [JsonConverter(typeof(JsonConverters.InboundConfigurationConverter))]
     public abstract class InboundConfigurationObject
     {
         protected  InboundServerSettingType Type_ { get; set; }
@@ -43,8 +43,8 @@ namespace XrayCoreConfigModle.Inbound
                 case InboundServerSettingType.DokodemoDoor:
                     ret = typeof(DokodemoDoorConfigurationObject);
                     break;
-                case InboundServerSettingType.None:
-                    ret = typeof(NoneConfigurationObject);
+                case InboundServerSettingType.Unknown:
+                    ret = typeof(UnknownConfigurationObject);
                     break;
                 default:
                     throw new ArgumentException(nameof(type));

@@ -6,12 +6,29 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.OutBound
 {
-    public class VlessConfigurationObject
+    public class VlessConfigurationObject: OutboundConfigurationObject
     {
+        public VlessConfigurationObject(): base(OutboundServerSettingType.Vless) { }
         /// <summary>
         /// 表示 VLESS 服务器列表，包含一组指向服务端的配置, 其中每一项是一个服务器配置。
         /// </summary>
-        public List<VlessUserObject>? vnext { get; set; }
+        public List<VlessServerObject>? vnext { get; set; }
+    }
+
+    public class VlessServerObject
+    {
+        /// <summary>
+        /// 服务端地址，指向服务端，支持域名、IPv4、IPv6。
+        /// </summary>
+        public string? address { get; set; }
+        /// <summary>
+        /// 服务端端口，通常与服务端监听的端口相同。
+        /// </summary>
+        public int? port { get; set; }
+        /// <summary>
+        /// 数组, 一组服务端认可的用户列表, 其中每一项是一个用户配置
+        /// </summary>
+        public List<VlessUserObject>? users { get; set; }
     }
     public class VlessUserObject
     {

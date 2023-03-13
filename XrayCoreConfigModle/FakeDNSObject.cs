@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle
 {
-    public class FakeDNSObject
+    [JsonConverter(typeof(JsonConverters.FakeDNSObjectConverter))]
+    public class FakeDNSObject: List<FakeDnsIpPoolObject>
+    {
+    }
+    public class FakeDnsIpPoolObject
     {
         /// <summary>
         /// FakeDNS 将使用此选项指定的CIDR IP 块分配地址。

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.OutBound
 {
-    public class HttpConfigurationObject
+    public class HttpConfigurationObject: OutboundConfigurationObject
     {
+        public HttpConfigurationObject(): base(OutboundServerSettingType.Http) { }
         /// <summary>
         /// HTTP 服务器列表，其中每一项是一个服务器配置，若配置多个，循环使用 (RoundRobin)。
         /// </summary>

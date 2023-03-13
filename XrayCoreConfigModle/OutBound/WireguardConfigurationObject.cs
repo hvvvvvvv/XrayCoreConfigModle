@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.OutBound
 {
-    public class WireguardConfigurationObject
+    public class WireguardConfigurationObject: OutboundConfigurationObject
     {
+        public WireguardConfigurationObject(): base(OutboundServerSettingType.WireGuard) { }
         /// <summary>
         /// 用户私钥。必填。
         /// </summary>

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.OutBound
 {
-    public class TrojanConfigurationObject
+    public class TrojanConfigurationObject: OutboundConfigurationObject
     {
+        public TrojanConfigurationObject(): base(OutboundServerSettingType.Trojan) { }
         public List<TrojanServerObject>? servers { get; set; }
     }
     public class TrojanServerObject

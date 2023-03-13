@@ -10,18 +10,18 @@ using XrayCoreConfigModle.JsonConverters;
 
 namespace XrayCoreConfigModle.Inbound
 {
-    [JsonConverter(typeof(NoneConfigurationConverter))]
-    public class NoneConfigurationObject:InboundConfigurationObject
+    [JsonConverter(typeof(InboundUnknownConfigurationConverter))]
+    public class UnknownConfigurationObject:InboundConfigurationObject
     {
         private JsonObject? Content;
-        public NoneConfigurationObject(JsonObject? content = null)
+        public UnknownConfigurationObject(JsonObject? content = null)
         {
-            Type_ = InboundServerSettingType.None;
+            Type_ = InboundServerSettingType.Unknown;
             Content = content;
         }
         public InboundConfigurationObject? ConverToSpecificType(InboundServerSettingType _type)
         {
-            if(_type == InboundServerSettingType.None)
+            if(_type == InboundServerSettingType.Unknown)
             {
                 return this;
             }

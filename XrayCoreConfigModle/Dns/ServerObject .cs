@@ -10,8 +10,9 @@ namespace XrayCoreConfigModle.Dns
     /// DNS服务器定义，支持的形式较多
     /// 详情参阅 https://github.com/XTLS/Xray-docs-next/blob/main/docs/config/dns.md#serverobject
     /// </summary>
-    public class ServerObject
+    public class ServerObject: DnsServer
     {
+        public ServerObject() : base(DnsServerInputMode.Object) { }
         /// <summary>
         ///
         /// </summary>

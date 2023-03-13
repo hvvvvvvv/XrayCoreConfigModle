@@ -9,11 +9,11 @@ using XrayCoreConfigModle.Inbound;
 
 namespace XrayCoreConfigModle.JsonConverters
 {
-    public class ConfigurationConverter : JsonConverter<InboundConfigurationObject>
+    public class InboundConfigurationConverter : JsonConverter<InboundConfigurationObject>
     {
         public override InboundConfigurationObject? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            return JsonSerializer.Deserialize<NoneConfigurationObject>(ref reader, options);
+            return JsonSerializer.Deserialize<UnknownConfigurationObject>(ref reader, options);
         }
 
         public override void Write(Utf8JsonWriter writer, InboundConfigurationObject value, JsonSerializerOptions options)

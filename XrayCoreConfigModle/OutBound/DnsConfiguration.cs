@@ -11,8 +11,9 @@ namespace XrayCoreConfigModle.OutBound
     /// 此出站协议只能接收 DNS 流量（包含基于 UDP 和 TCP 协议的查询），其它类型的流量会导致错误。
     /// 在处理 DNS 查询时，此出站协议会将 IP 查询（即 A 和 AAAA）转发给内置的 DNS 服务器。其它类型的查询流量将被转发至它们原本的目标地址。
     /// </summary>
-    public class DnsOutboundConfiguration
+    public class DnsConfiguration: OutboundConfigurationObject
     {
+        public DnsConfiguration(): base(OutboundServerSettingType.Dns) { }
         /// <summary>
         /// 修改 DNS 流量的传输层协议，可选的值有 "tcp" 和 "udp"。当不指定时，保持来源的传输方式不变。
         /// </summary>

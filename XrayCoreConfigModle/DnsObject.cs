@@ -22,11 +22,10 @@ namespace XrayCoreConfigModle
         /// </summary>
         public Dictionary<string, List<string>>? hosts { get; set; }
 
-        [JsonConverter(typeof(JsonConverters.DnsServersConverter))]
         /// <summary>
         /// 一个 DNS 服务器列表,目前字符串隐式转换只支持"address:port"的形式，其他形式太复杂，暂时没做相应的隐式转换
         /// </summary>
-        public List<Dns.ServerObject>? servers { get; set; }
+        public List<Dns.DnsServer>? servers { get; set; }
         /// <summary>
         /// 用于 DNS 查询时通知服务器以指定 IP 的地理位置。不能是私有地址。
         /// </summary>

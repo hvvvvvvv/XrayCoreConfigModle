@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace XrayCoreConfigModle.OutBound
 {
-    public class SocksConfigurationObject
+    public class SocksConfigurationObject: OutboundConfigurationObject
     {
+        public SocksConfigurationObject(): base(OutboundServerSettingType.Socks) { }
         /// <summary>
         /// Socks 服务器列表，其中每一项是一个服务器配置。
         /// </summary>
